@@ -20,14 +20,20 @@ namespace Taco_Bell_API.Controllers
         {
             return dbContext.Burritos.FirstOrDefault(b => b.Cost == cost);
         }
-        //[HttpPost]
-        //public Burrito AddBurrito(string name, float cost, bool bean)
-        //{
-        //    Burrito newBurrito = new Burrito(name, cost, bean);
-        //    dbContext.Add(newBurrito);
-        //    dbContext.SaveChanges();
-        //    return newBurrito;
-        //}
+        [HttpPost]
+        public Burrito AddBurrito(string name, float cost, bool bean)
+        {
+            Burrito newBurrito = new Burrito()
+            {
+                Name = name,
+                Cost = cost,
+                Bean = bean,
+          
+            };
+            dbContext.Add(newBurrito);
+            dbContext.SaveChanges();
+            return newBurrito;
+        }
         [HttpDelete]
         public Burrito DeleteBurrito(string name)
         {

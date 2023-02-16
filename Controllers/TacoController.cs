@@ -16,18 +16,26 @@ namespace Taco_Bell_API.Controllers
             return dbContext.Tacos.ToList();
         }
         [HttpGet("dorito")]
-        public Taco GetByCost(bool dorito)
+        public List<Taco> GetByDorito(bool dorito)
         {
-            return dbContext.Tacos.FirstOrDefault(t => t.Dorito == dorito);
+            return dbContext.Tacos.Where(t => t.Dorito == dorito).ToList();
         }
-        //[HttpPost]
-        //public Taco AddTaco(string name, float cost, bool softshell, bool dorito)
-        //{
-        //    Taco newTaco = new Taco(name, cost, softshell, dorito);
-        //    dbContext.Add(newTaco);
-        //    dbContext.SaveChanges();
-        //    return newTaco;
-        //}
+        [HttpPost]
+        public Taco AddTaco(string name, float cost, bool softshell, bool dorito)
+        {
+            Taco newTaco = new Taco()
+            {
+
+                Name = name,
+                Cost = cost,
+                SoftShell = softshell,
+                Dorito = dorito
+
+            };
+            dbContext.Add(newTaco);
+            dbContext.SaveChanges();
+            return newTaco;
+        }
 
         //[HttpDelete]
         //public Taco DeleteTaco(string name)

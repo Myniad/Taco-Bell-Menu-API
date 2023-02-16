@@ -16,9 +16,9 @@ namespace Taco_Bell_API.Controllers
             return dbContext.Drinks.ToList();
         }
         [HttpGet("slushie")]
-        public Drink GetByCost(bool slushie)
+        public List<Drink> GetBySlushie(bool slushie)
         {
-            return dbContext.Drinks.FirstOrDefault(d => d.Slushie == slushie);
+            return dbContext.Drinks.Where(d => d.Slushie == slushie).ToList();
         }
         //[HttpPost]
         //public Drink AddDrink(string name, float cost, bool slushie)

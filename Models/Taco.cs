@@ -15,11 +15,5 @@ public partial class Taco
     public bool SoftShell { get; set; }
 
     public bool Dorito { get; set; }
-    //public Taco(string name, float cost, bool softshell, bool dorito)
-    //{
-    //    Name = name;
-    //    Cost = cost;
-    //    SoftShell = softshell;
-    //    Dorito = dorito;
-    //}
+    
 }
